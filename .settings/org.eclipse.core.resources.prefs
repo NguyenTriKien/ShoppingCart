@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/shoppingcart/config/AppContext.java=UTF-8
+encoding//src/main/java/com/shoppingcart/config/WebMvcConfig.java=UTF-8
+encoding//src/main/java/com/shoppingcart/config/WebSecurityConfig.java=UTF-8
+encoding//src/main/java/com/shoppingcart/controller/MainController.java=UTF-8
+encoding//src/main/java/com/shoppingcart/dao/impl/ProductDAOImpl.java=UTF-8
+encoding//src/main/java/com/shoppingcart/model/PaginationResult.java=UTF-8
+encoding//src/main/java/com/shoppingcart/util/Utils.java=UTF-8
