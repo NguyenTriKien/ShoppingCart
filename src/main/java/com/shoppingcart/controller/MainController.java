@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.shoppingcart.dao.ProductDAO;
 import com.shoppingcart.entity.Product;
 import com.shoppingcart.model.CartInfo;
+import com.shoppingcart.model.CustomerInfo;
 import com.shoppingcart.model.PaginationResult;
 import com.shoppingcart.model.ProductInfo;
 import com.shoppingcart.util.Utils;
@@ -78,4 +80,49 @@ public class MainController {
 		return "shoppingCart";
 	}
 
+	@RequestMapping(value = {"/shoppingCart"}, method = RequestMethod.POST)
+	public String shoppingCartUpdateQuantity(HttpServletRequest request, Model model, 
+			@ModelAttribute("cartForm") CartInfo cartForm) {
+		CartInfo cartInfo = Utils.getCartInfoInSession(request);
+		cartInfo.updateQuantity(cartForm);
+		return "redirect:/shoppingCart";
+		
+	}
+	
+	@RequestMapping({"/shoppingCartRemoveProduct"})
+		public String removeProductHanlder(HttpServletRequest request, Model model,
+				@RequestParam(value = "code", defaultValue = "") String code) {
+			Product product = null;
+			
+			if (code != null && code.length() > 0) {
+				product = productDAO.getProductByCode(code);
+			}
+			
+			if (product != null) {
+				CartInfo cartInfo = Utils.getCartInfoInSession(request);
+				ProductInfo productInfo = new ProductInfo(product);
+				cartInfo.removeProduct(productInfo);
+			}
+			
+			return "redirect:/shoppingCart";
+		}
+	
+	@RequestMapping(value = {"/shoppingCartCustomer"}, method = RequestMethod.GET)
+	public String shoppingCartCustomerForm(HttpServletRequest request, Model model) {
+		CartInfo cartInfo = Utils.getCartInfoInSession(request);
+		
+		if(cartInfo.isEmpty()) {
+			return "redirect:/shoppingCart";
+		}
+		
+		CustomerInfo customerInfo = cartInfo.getCustomerInfo();
+		if(customerInfo == null) {
+			customerInfo = new CustomerInfo();
+		}
+		
+		model.addAttribute("customerForm", customerInfo);
+		return "shoppingCartCustomer";
+		
+	}
+		
 }
