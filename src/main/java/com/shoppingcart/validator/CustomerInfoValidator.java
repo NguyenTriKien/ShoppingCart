@@ -1,7 +1,6 @@
 package com.shoppingcart.validator;
 
 import org.apache.commons.validator.EmailValidator;
-import org.apache.commons.validator.util.ValidatorUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -9,6 +8,7 @@ import org.springframework.validation.Validator;
 
 import com.shoppingcart.model.CustomerInfo;
 
+@SuppressWarnings("deprecation")
 @Component
 public class CustomerInfoValidator implements Validator {
 
