@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shoppingcart.dao.OrderDAO;
 import com.shoppingcart.dao.ProductDAO;
 import com.shoppingcart.entity.Product;
 import com.shoppingcart.model.CartInfo;
@@ -32,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	private CustomerInfoValidator customerInfoValidator;
+	
+	@Autowired
+	private OrderDAO orderDAO;
 
 	// Danh sách sản phẩm
 	@RequestMapping({ "/productList" })
@@ -156,7 +160,28 @@ public class MainController {
 			return "redirect:/shoppingCartCustomer";
 		}
 		
-		return "shoppingCartConfirmation";
+		try {
+		    orderDAO.saveOrder(cartInfo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "shoppoingCartConfirmation";
+		}
+		
+		Utils.removeCartInfoSession(request);
+		
+		Utils.storeLastOrderedCartInfoInSession(request, cartInfo);
+		
+		return "redirect:/shoppingCartFinalize";
+	}
+	
+	@RequestMapping(value = {"/shoppingCartFinalize"}, method = RequestMethod.GET)
+	public String shoppingCartFinalize(HttpServletRequest request, Model model) {
+		CartInfo lastOrderedCart = Utils.getLastOrderedCartInfoInSession(request);
+		
+		if(lastOrderedCart == null) {
+			return "redirect:/shoppingCart";
+		}
+		return "shoppingCartFinalize";
 	}
     
 	
