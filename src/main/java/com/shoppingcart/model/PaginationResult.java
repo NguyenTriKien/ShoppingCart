@@ -80,7 +80,7 @@ public class PaginationResult<E> {
 		this.navigationPages = navigationPages;
 	}
 	
-	public PaginationResult(Query query, int page, int maxResult, int maxNavigationPage) {
+	public PaginationResult(Query<?> query, int page, int maxResult, int maxNavigationPage) {
 		int pageIndex = page - 1 < 0 ? 0 : page - 1;
 		int fromRecordIndex = pageIndex * maxResult;
 		int maxRecordIndex = fromRecordIndex + maxResult;

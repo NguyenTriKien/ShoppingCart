@@ -19,10 +19,10 @@
 			<c:if test="${name != null }">
                Hello <a href="${contextPath }/accountInfo">${name}</a>
                &nbsp;|&nbsp;
-               <a href="${contextPath}/Logout">Logout</a>
+               <a href="${contextPath}/logout">Logout</a>
 			</c:if>
 			<c:if test="${name == null}">
-			   <a href="${contextPath}/Login">Login</a>
+			   <a href="${contextPath}/login">Login</a>
 			</c:if>
 		</div>
 	</div>
