@@ -35,7 +35,7 @@
            <th>Amount</th>
            <th>View</th>
         </tr>
-        <c:forEach items="${orderInfo.orderDate}" pattern="dd-MM-yyyy H:mm">
+        <c:forEach items="${paginationOrderInfos.list}" var = "orderInfo">
            <tr>
               <td>${orderInfo.orderNum}</td>
               <td>
@@ -58,7 +58,7 @@
               
               <c:forEach items="${paginationOrderInfos.navigationPages}" var="page">
                  <c:if test="${page != -1 }">
-                    <a href="orderList?page=${page}" class="nav-item">$page</a>
+                    <a href="orderList?page=${page}" class="nav-item">${page}</a>
                  </c:if>
                   <c:if test="${page == -1 }">
                     <span class="nav-item">...</span>

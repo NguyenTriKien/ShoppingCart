@@ -112,14 +112,14 @@ public class PaginationResult<E> {
 		this.list = results;
 		this.maxResult = maxResult;
 		
-		this.totalPages = (this.totalPages / this.maxResult) + 1;
+		this.totalPages = (this.totalRecords / this.maxResult) + 1;
 		this.maxNavigationPage = maxNavigationPage;
 		
 		if(maxNavigationPage < this.totalPages) {
 			this.maxNavigationPage = maxNavigationPage;
 		}
 		
-		this.getNavigationPages();
+		this.calcNavigationPages();
 	}
 	
 	private void calcNavigationPages() {

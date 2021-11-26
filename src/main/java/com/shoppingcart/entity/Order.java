@@ -34,7 +34,7 @@ public class Order implements Serializable{
 	private String customerName;
 	
 	@Column(name = "Customer_Address",length = 255, nullable = false)
-	private String customeAddress;
+	private String customerAddress;
 	
 	@Column(name = "Customer_email",length = 255, nullable = false)
 	private String customerEmail;
@@ -83,11 +83,11 @@ public class Order implements Serializable{
 	}
 
 	public String getCustomeAddress() {
-		return customeAddress;
+		return customerAddress;
 	}
 
-	public void setCustomeAddress(String customeAddress) {
-		this.customeAddress = customeAddress;
+	public void setCustomeAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
 	}
 
 	public String getCustomerEmail() {

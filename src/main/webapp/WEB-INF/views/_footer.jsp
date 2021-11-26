@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Footer</title>\
+<title>Footer</title>
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/css/style.css">
 <title>Insert title here</title>
