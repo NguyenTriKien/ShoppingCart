@@ -100,5 +100,15 @@ public class OrderInfo {
 		this.customerPhone = customerPhone;
 	}
 
+	public List<OrderDetailInfo> getOrderDetailInfos() {
+		return orderDetailInfos;
+	}
+
+	public void setOrderDetailInfos(List<OrderDetailInfo> orderDetailInfos) {
+		this.orderDetailInfos = orderDetailInfos;
+	}
+
+    
+
 	
 }

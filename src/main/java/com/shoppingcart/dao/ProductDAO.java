@@ -10,4 +10,8 @@ public interface ProductDAO {
 	
 	public Product getProductByCode(String code);
 
+	public ProductInfo getProductInfoByCode(String code);
+
+	public void saveProductInfo(ProductInfo productInfo);
+	
 }

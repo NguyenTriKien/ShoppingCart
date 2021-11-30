@@ -23,7 +23,8 @@
 			access="hasAnyRole('ROLE_MANAGER', 'ROLE_EMPLOYEE')">
 			<a href="${contextPath}/orderList"> Order List</a>
 		</security:authorize>
-		<security:authorize>
+		<security:authorize
+		    access="hasAnyRole('ROLE_MANAGER', 'ROLE_EMPLOYEE')">
 			<a href="${contextPath }/product"> Create product</a>
 		</security:authorize>
 	</div>

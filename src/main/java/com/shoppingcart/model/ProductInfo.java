@@ -65,8 +65,12 @@ public class ProductInfo {
 		this.newProduct = newProduct;
 	}
 
-	
-	
-	
+	public CommonsMultipartFile getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(CommonsMultipartFile fileData) {
+		this.fileData = fileData;
+	}
 	
 }
